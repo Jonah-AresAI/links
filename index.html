@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Jonah Thorndike</title>
+<meta name="description" content="Founder of Ares. Links to Ares, the EKRIS card, and everywhere else." />
+<meta property="og:title" content="Jonah Thorndike" />
+<meta property="og:description" content="Founder of Ares. Links to Ares, the EKRIS card, and everywhere else." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://jonah.aresdeploy.com" />
+<meta name="theme-color" content="#0a0a0c" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230a0a0c'/%3E%3Ctext x='16' y='21.5' font-family='Georgia,serif' font-size='15' fill='%23f5f2ea' text-anchor='middle'%3EJT%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif&display=swap" rel="stylesheet" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0a0a0c;
+    --ink: #f5f2ea;
+    --ink-dim: rgba(245, 242, 234, 0.55);
+    --ink-faint: rgba(245, 242, 234, 0.32);
+    --line: rgba(245, 242, 234, 0.10);
+    --card: rgba(245, 242, 234, 0.035);
+    --card-hover: rgba(245, 242, 234, 0.07);
+  }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* soft top glow */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(60% 40% at 50% -5%, rgba(245, 242, 234, 0.07), transparent 70%),
+      radial-gradient(45% 30% at 50% 108%, rgba(245, 242, 234, 0.04), transparent 70%);
+  }
+
+  main {
+    width: 100%;
+    max-width: 27rem;
+    padding: clamp(3.5rem, 10vh, 6rem) 1.5rem 3rem;
+    position: relative;
+  }
+
+  .monogram {
+    width: 4.25rem;
+    height: 4.25rem;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    background:
+      radial-gradient(120% 120% at 30% 20%, rgba(245, 242, 234, 0.09), rgba(245, 242, 234, 0.02));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.4rem;
+    font-family: "Instrument Serif", Georgia, serif;
+    font-size: 1.55rem;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    user-select: none;
+  }
+
+  h1 {
+    font-family: "Instrument Serif", Georgia, serif;
+    font-weight: 400;
+    font-size: 2.1rem;
+    text-align: center;
+    letter-spacing: 0.01em;
+  }
+
+  .tag {
+    text-align: center;
+    color: var(--ink-dim);
+    font-size: 0.95rem;
+    margin-top: 0.45rem;
+  }
+
+  .tag .dot {
+    display: inline-block;
+    margin: 0 0.55em;
+    opacity: 0.5;
+  }
+
+  nav {
+    margin-top: 2.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .link {
+    display: flex;
+    align-items: center;
+    gap: 0.95rem;
+    padding: 1rem 1.15rem;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: var(--card);
+    text-decoration: none;
+    color: var(--ink);
+    transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+  }
+
+  .link:hover, .link:focus-visible {
+    background: var(--card-hover);
+    border-color: rgba(245, 242, 234, 0.22);
+    transform: translateY(-1px);
+  }
+
+  .link:active { transform: translateY(0); }
+
+  .link:focus-visible {
+    outline: 1.5px solid rgba(245, 242, 234, 0.5);
+    outline-offset: 2px;
+  }
+
+  .link .icon {
+    width: 2.35rem;
+    height: 2.35rem;
+    flex: none;
+    border-radius: 0.7rem;
+    border: 1px solid var(--line);
+    background: rgba(245, 242, 234, 0.03);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .link .icon svg {
+    width: 1.15rem;
+    height: 1.15rem;
+    fill: var(--ink);
+    display: block;
+  }
+
+  .link .text { flex: 1; min-width: 0; }
+
+  .link .name {
+    font-weight: 600;
+    font-size: 0.98rem;
+    letter-spacing: 0.005em;
+  }
+
+  .link .sub {
+    color: var(--ink-dim);
+    font-size: 0.82rem;
+    margin-top: 0.1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .link .arrow {
+    flex: none;
+    color: var(--ink-faint);
+    transition: color 160ms ease, transform 160ms ease;
+  }
+
+  .link:hover .arrow {
+    color: var(--ink-dim);
+    transform: translateX(2px);
+  }
+
+  .section-gap { margin-top: 1.5rem; }
+
+  footer {
+    margin-top: 3.2rem;
+    text-align: center;
+    color: var(--ink-faint);
+    font-size: 0.78rem;
+    letter-spacing: 0.02em;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .link, .link .arrow { transition: none; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <div class="monogram" aria-hidden="true">JT</div>
+  <h1>Jonah Thorndike</h1>
+  <p class="tag">Founder, Ares<span class="dot">·</span>Maui, Hawai&#699;i</p>
+
+  <nav aria-label="Links">
+    <a class="link" href="https://aresdeploy.com" >
+      <span class="icon" aria-hidden="true">
+        <!-- Ares chevron -->
+        <svg viewBox="0 0 24 24"><path d="M12 3.5 21 20h-3.6L12 9.9 6.6 20H3L12 3.5Z"/></svg>
+      </span>
+      <span class="text">
+        <span class="name">Ares</span>
+        <span class="sub">The AI marketing agent — aresdeploy.com</span>
+      </span>
+      <svg class="arrow" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3.5 10.5 8 6 12.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+
+    <a class="link" href="https://cards-production-3955.up.railway.app/c/zW7bWWoyHakacF4j-2ymUA">
+      <span class="icon" aria-hidden="true">
+        <!-- EKRIS card -->
+        <svg viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 18.5v-13Zm2.5-.7a.7.7 0 0 0-.7.7v13c0 .39.31.7.7.7h11a.7.7 0 0 0 .7-.7v-13a.7.7 0 0 0-.7-.7h-11ZM7 15.4h6.2v1.4H7v-1.4Z"/></svg>
+      </span>
+      <span class="text">
+        <span class="name">EKRIS</span>
+        <span class="sub">A live ad account, distilled onto a card</span>
+      </span>
+      <svg class="arrow" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3.5 10.5 8 6 12.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </nav>
+
+  <nav class="section-gap" aria-label="Social profiles">
+    <a class="link" href="https://www.instagram.com/aresaiagent/">
+      <span class="icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M12 4.2c2.54 0 2.84.01 3.84.06.93.04 1.43.2 1.77.33.44.17.76.38 1.09.71.33.33.54.65.71 1.09.13.34.29.84.33 1.77.05 1 .06 1.3.06 3.84s-.01 2.84-.06 3.84c-.04.93-.2 1.43-.33 1.77-.17.44-.38.76-.71 1.09a2.93 2.93 0 0 1-1.09.71c-.34.13-.84.29-1.77.33-1 .05-1.3.06-3.84.06s-2.84-.01-3.84-.06c-.93-.04-1.43-.2-1.77-.33a2.93 2.93 0 0 1-1.09-.71 2.93 2.93 0 0 1-.71-1.09c-.13-.34-.29-.84-.33-1.77-.05-1-.06-1.3-.06-3.84s.01-2.84.06-3.84c.04-.93.2-1.43.33-1.77.17-.44.38-.76.71-1.09.33-.33.65-.54 1.09-.71.34-.13.84-.29 1.77-.33 1-.05 1.3-.06 3.84-.06ZM12 2.4c-2.61 0-2.93.01-3.95.06-1.02.05-1.72.21-2.33.45-.63.24-1.17.57-1.7 1.11-.54.53-.87 1.07-1.11 1.7-.24.61-.4 1.31-.45 2.33-.05 1.02-.06 1.34-.06 3.95s.01 2.93.06 3.95c.05 1.02.21 1.72.45 2.33.24.63.57 1.17 1.11 1.7.53.54 1.07.87 1.7 1.11.61.24 1.31.4 2.33.45 1.02.05 1.34.06 3.95.06s2.93-.01 3.95-.06c1.02-.05 1.72-.21 2.33-.45a4.71 4.71 0 0 0 1.7-1.11c.54-.53.87-1.07 1.11-1.7.24-.61.4-1.31.45-2.33.05-1.02.06-1.34.06-3.95s-.01-2.93-.06-3.95c-.05-1.02-.21-1.72-.45-2.33a4.71 4.71 0 0 0-1.11-1.7 4.71 4.71 0 0 0-1.7-1.11c-.61-.24-1.31-.4-2.33-.45-1.02-.05-1.34-.06-3.95-.06Zm0 4.67a4.93 4.93 0 1 0 0 9.86 4.93 4.93 0 0 0 0-9.86Zm0 8.13a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4Zm6.28-8.32a1.15 1.15 0 1 1-2.3 0 1.15 1.15 0 0 1 2.3 0Z"/></svg>
+      </span>
+      <span class="text">
+        <span class="name">Instagram</span>
+        <span class="sub">@aresaiagent</span>
+      </span>
+      <svg class="arrow" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3.5 10.5 8 6 12.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+
+    <a class="link" href="https://x.com/aresaiagent">
+      <span class="icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M17.75 3h3.07l-6.7 7.66L22 21h-6.17l-4.84-6.32L5.46 21H2.38l7.17-8.2L2 3h6.33l4.37 5.78L17.75 3Zm-1.08 16.16h1.7L7.4 4.74H5.57l11.1 14.42Z"/></svg>
+      </span>
+      <span class="text">
+        <span class="name">X</span>
+        <span class="sub">@aresaiagent</span>
+      </span>
+      <svg class="arrow" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3.5 10.5 8 6 12.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+
+    <a class="link" href="https://www.youtube.com/@aresaiagent">
+      <span class="icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.76-1.77C18.28 5 12 5 12 5s-6.28 0-7.84.43A2.5 2.5 0 0 0 2.4 7.2 26.2 26.2 0 0 0 2 12c0 1.62.13 3.23.4 4.8a2.5 2.5 0 0 0 1.76 1.77C5.72 19 12 19 12 19s6.28 0 7.84-.43a2.5 2.5 0 0 0 1.76-1.77c.27-1.57.4-3.18.4-4.8s-.13-3.23-.4-4.8ZM10 15.2V8.8l5.2 3.2-5.2 3.2Z"/></svg>
+      </span>
+      <span class="text">
+        <span class="name">YouTube</span>
+        <span class="sub">@aresaiagent</span>
+      </span>
+      <svg class="arrow" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3.5 10.5 8 6 12.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+
+    <a class="link" href="https://www.linkedin.com/in/jonah-thorndike-45229741a/">
+      <span class="icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.1 2.1 0 1 1 0 4.2 2.1 2.1 0 0 1 0-4.2ZM3.16 9.24h3.66V20.5H3.16V9.24Zm5.83 0h3.51v1.54h.05c.49-.92 1.68-1.9 3.46-1.9 3.7 0 4.39 2.44 4.39 5.6v6.02h-3.66v-5.34c0-1.27-.02-2.91-1.77-2.91-1.78 0-2.05 1.39-2.05 2.82v5.43H8.99V9.24Z"/></svg>
+      </span>
+      <span class="text">
+        <span class="name">LinkedIn</span>
+        <span class="sub">Jonah Thorndike</span>
+      </span>
+      <svg class="arrow" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3.5 10.5 8 6 12.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </nav>
+
+  <footer>© 2026 Jonah Thorndike</footer>
+</main>
+</body>
+</html>
