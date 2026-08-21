@@ -61,43 +61,12 @@
     position: relative;
   }
 
-  .monogram {
-    width: 4.25rem;
-    height: 4.25rem;
-    border-radius: 50%;
-    border: 1px solid var(--line);
-    background:
-      radial-gradient(120% 120% at 30% 20%, rgba(245, 242, 234, 0.09), rgba(245, 242, 234, 0.02));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 1.4rem;
-    font-family: "Instrument Serif", Georgia, serif;
-    font-size: 1.55rem;
-    letter-spacing: 0.04em;
-    color: var(--ink);
-    user-select: none;
-  }
-
   h1 {
     font-family: "Instrument Serif", Georgia, serif;
     font-weight: 400;
     font-size: 2.1rem;
     text-align: center;
     letter-spacing: 0.01em;
-  }
-
-  .tag {
-    text-align: center;
-    color: var(--ink-dim);
-    font-size: 0.95rem;
-    margin-top: 0.45rem;
-  }
-
-  .tag .dot {
-    display: inline-block;
-    margin: 0 0.55em;
-    opacity: 0.5;
   }
 
   nav {
@@ -181,16 +150,6 @@
     transform: translateX(2px);
   }
 
-  .section-gap { margin-top: 1.5rem; }
-
-  footer {
-    margin-top: 3.2rem;
-    text-align: center;
-    color: var(--ink-faint);
-    font-size: 0.78rem;
-    letter-spacing: 0.02em;
-  }
-
   @media (prefers-reduced-motion: reduce) {
     .link, .link .arrow { transition: none; }
   }
@@ -198,9 +157,7 @@
 </head>
 <body>
 <main>
-  <div class="monogram" aria-hidden="true">JT</div>
   <h1>Jonah Thorndike</h1>
-  <p class="tag">Maui, Hawai&#699;i</p>
 
   <nav aria-label="Links">
     <a class="link" href="https://aresdeploy.com" >
@@ -263,7 +220,6 @@
     </a>
   </nav>
 
-  <footer>© 2026 Jonah Thorndike</footer>
 </main>
 <script>
   // On phones, try the native app first; fall back to the web profile if the
