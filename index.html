@@ -4,9 +4,9 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Jonah Thorndike</title>
-<meta name="description" content="Founder of Ares. Links to Ares, the EKRIS card, and everywhere else." />
+<meta name="description" content="Founder of Ares. Links to Ares, the Ekris card, and everywhere else." />
 <meta property="og:title" content="Jonah Thorndike" />
-<meta property="og:description" content="Founder of Ares. Links to Ares, the EKRIS card, and everywhere else." />
+<meta property="og:description" content="Founder of Ares. Links to Ares, the Ekris card, and everywhere else." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://links.aresdeploy.com" />
 <meta name="theme-color" content="#0a0a0c" />
@@ -111,9 +111,9 @@
     display: flex;
     align-items: center;
     gap: 0.95rem;
-    padding: 1rem 1.15rem;
+    padding: 0.95rem 1.45rem;
     border: 1px solid var(--line);
-    border-radius: 1rem;
+    border-radius: 999px;
     background: var(--card);
     text-decoration: none;
     color: var(--ink);
@@ -133,55 +133,33 @@
     outline-offset: 2px;
   }
 
-  /* Tinted Liquid Glass tiles — the EKRIS card service's .glass material,
-     scaled to a badge: blurred backdrop, pulled saturation, specular top
-     edge with a shaded underside, brand tint in the fill. */
+  /* Bare badges, EKRIS-card style: no box, the glyph itself is the grey
+     tinted glass — translucent ink with a specular top edge and a shaded
+     underside. */
   .link .icon {
-    width: 2.35rem;
-    height: 2.35rem;
+    width: 1.6rem;
+    height: 1.6rem;
     flex: none;
-    border-radius: 0.7rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    background:
-      linear-gradient(135deg, var(--tint-a, rgba(255, 255, 255, 0.10)), var(--tint-b, rgba(255, 255, 255, 0.03))),
-      rgba(255, 255, 255, 0.07);
-    backdrop-filter: blur(22px) saturate(180%);
-    -webkit-backdrop-filter: blur(22px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.22),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.35),
-      0 4px 16px rgba(0, 0, 0, 0.40);
   }
-
-  /* Where the browser cannot blur, the fill carries it alone. */
-  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-    .link .icon { background:
-      linear-gradient(135deg, var(--tint-a, rgba(255, 255, 255, 0.10)), var(--tint-b, rgba(255, 255, 255, 0.03))),
-      rgba(255, 255, 255, 0.12); }
-  }
-
-  .icon.ic-ares { --tint-a: rgba(255, 0, 0, 0.20); --tint-b: rgba(255, 0, 0, 0.05); }
-  .icon.ic-yt   { --tint-a: rgba(255, 0, 0, 0.22); --tint-b: rgba(255, 0, 0, 0.06); }
-  .icon.ic-li   { --tint-a: rgba(10, 102, 194, 0.32); --tint-b: rgba(10, 102, 194, 0.10); }
-  /* Instagram carries its own four-stop ramp along the mark's axis. */
-  .icon.ic-ig { background:
-    linear-gradient(135deg, rgba(255, 214, 0, 0.22), rgba(255, 122, 0, 0.18) 30%, rgba(250, 0, 112, 0.18) 65%, rgba(138, 36, 232, 0.24)),
-    rgba(255, 255, 255, 0.05); }
 
   .link .icon svg {
-    width: 1.15rem;
-    height: 1.15rem;
-    fill: var(--ink);
+    width: 1.35rem;
+    height: 1.35rem;
+    fill: rgba(235, 235, 240, 0.55);
     display: block;
+    filter:
+      drop-shadow(0 1px 0 rgba(255, 255, 255, 0.14))
+      drop-shadow(0 2px 5px rgba(0, 0, 0, 0.45));
   }
 
-  /* The Ares mark is stroked, not filled. */
-  .icon.ic-ares svg { fill: none; width: 1.25rem; height: auto; }
-  /* The EKRIS house glyph is 1.5:1. */
-  .icon.ic-ekris svg { width: 1.3rem; height: auto; }
+  /* The Ares mark is stroked, not filled — same glass ink. */
+  .icon.ic-ares svg { fill: none; width: 1.45rem; height: auto; }
+  .icon.ic-ares svg path { stroke: rgba(235, 235, 240, 0.55); }
+  /* The Ekris house glyph is wide (1342x894). */
+  .icon.ic-ekris svg { width: 1.5rem; height: auto; }
 
   .link .text { flex: 1; min-width: 0; }
 
@@ -240,7 +218,7 @@
         <svg viewBox="0 0 1342 894"><path d="M432.5 53.84C437.21 54.94 439.42 60.45 442.18 64.3C449.01 73.85 455.59 83.61 462.23 93.27C482.01 122.05 501.73 151.01 522.28 179.24C527.75 186.75 532.98 194.49 538.54 201.93C541.91 206.43 547.12 212.18 548.57 217.5C539.93 219.66 529.4 218.13 520.5 218.14C502.83 218.14 485.17 218.31 467.5 218.16C460.83 218.1 454.16 218.16 447.5 218.25C444.73 218.29 440.81 217.62 438.21 218.66C434.79 220.02 428.28 231.8 425.77 235.27C415.39 249.61 405.75 264.49 395.33 278.8C379.86 300.03 364.57 321.58 349.92 343.38C346.19 348.94 342.24 354.39 338.36 359.84C336.91 361.89 334 364.9 333.82 367.51C333.58 370.93 339.99 379.39 342.01 382.47C350.19 394.95 358.56 407.28 366.94 419.62C399.83 468.03 433.17 516.11 465.94 564.62C491.02 601.74 517.43 637.98 542.29 675.24C549.07 685.39 556.19 695.32 563.05 705.42C565.14 708.51 568.31 715.2 571.98 716.47C575.82 717.8 581.47 716.9 585.5 716.87C595.17 716.8 604.83 716.77 614.5 716.8C647.83 716.92 681.17 716.91 714.5 716.73C725.83 716.66 737.17 716.77 748.5 716.82C752.84 716.84 759.91 718.1 763.93 716.41C766.68 715.26 769.1 710.62 770.78 708.28C775.23 702.07 779.95 696.06 784.17 689.69C797.84 669.05 813.26 649.33 827.58 629.12C869.64 569.8 912.65 510.94 952.92 450.39C964.56 432.89 976.49 415.33 988.73 398.25C994.59 390.07 1005.12 376.53 1008.42 367.5C1002.16 355.27 992.54 344.1 984.61 332.88C966.8 307.69 948.69 282.69 931.15 257.32C924.76 248.08 918.01 239.09 911.68 229.79C910.03 227.37 905.49 219.56 903.11 218.46C900.48 217.24 896.34 218 893.5 218C886.83 218.01 880.17 217.96 873.5 217.94C856.17 217.91 838.83 217.92 821.5 217.98C812.3 218.01 802.23 219.09 793.19 217.5C793.86 212.69 798.41 207.85 801.4 203.88C807.42 195.9 813.16 187.69 819.1 179.64C840.37 150.84 861.35 121.57 881.43 91.93C887.74 82.61 894.36 73.52 900.79 64.28C903.54 60.33 905.66 54.99 910.5 53.83C918.07 60.59 922.86 71.51 928.66 79.82C941.98 98.89 954.67 118.34 968.1 137.35C994.05 174.08 1020.25 210.69 1045.93 247.62C1062.82 271.9 1079.37 296.68 1097.17 320.3C1114.56 343.38 1130.53 367.53 1147.59 390.88C1152.38 397.44 1157.04 404.11 1161.66 410.8C1163.26 413.13 1166.65 416.68 1166.93 419.53C1167.21 422.3 1164.98 424.92 1163.62 427.14C1160.43 432.3 1157.43 437.57 1154.16 442.68C1144.52 457.76 1135.18 473.05 1125.68 488.22C1121.8 494.42 1118.37 501.59 1113.65 507.21C1110.1 511.44 1094.14 509.54 1088.5 509.58C1071.5 509.7 1054.5 509.75 1037.5 509.66C1032.65 509.63 1018.52 508.48 1014.69 510.15C1012.45 511.13 1007.68 519.29 1006.09 521.64C999.5 531.31 992.46 540.67 985.91 550.36C967.56 577.53 947.93 603.81 929.38 630.85C924.11 638.53 918.78 646.25 913.33 653.8C910.59 657.59 907.59 661.12 905.89 665.5C922.89 690.83 939.88 716.17 956.88 741.5C955.79 747.11 948.04 755.08 944.37 759.84C933.91 773.37 923.67 787.11 912.91 800.39C910.05 803.91 902.35 816.16 898.48 817.11C893.94 818.23 888.16 817.26 883.5 817.28C872.17 817.34 860.83 817.33 849.5 817.33C814.17 817.3 778.83 817.5 743.5 817.67C675.83 817.98 608.17 817.86 540.5 817.99C518.17 818.04 495.83 818.06 473.5 818.03C464.76 818.02 449.5 819.3 441.52 817.9C437.49 817.19 429.63 805.22 426.91 801.61C416.32 787.56 405.75 773.46 394.96 759.56C392.5 756.39 383.13 745.9 382.89 742.49C382.72 740.12 384.58 738.16 385.81 736.31C389.14 731.32 392.75 726.5 395.98 721.45C404.14 708.71 412.73 696.24 421.21 683.72C425.2 677.83 429.87 671.89 432.97 665.5C430.32 659.13 425.39 653.67 421.51 647.99C416.65 640.86 411.81 633.68 406.98 626.52C389.97 601.29 371.84 576.69 355.5 551.02C349.19 541.11 341.89 531.81 335.58 521.91C334 519.43 329.67 511.29 327.29 510.18C323.37 508.36 308.51 509.58 303.5 509.62C287.17 509.75 270.83 509.58 254.5 509.58C248.08 509.58 237.43 511.05 231.49 509.25C226.69 507.8 219.3 492.8 216.36 488.16C206.8 473.03 197.36 457.83 187.88 442.65C183.86 436.23 178.06 429.23 175.4 422.14C173.31 416.59 184.48 404.25 187.94 399.4C202.95 378.41 218.02 357.45 232.86 336.34C261.72 295.3 291.29 254.74 320.41 213.89C338.62 188.36 356.09 162.33 374.45 136.92C388.06 118.1 400.85 98.56 413.92 79.37C417.86 73.59 427.54 56.98 432.5 53.84Z"/></svg>
       </span>
       <span class="text">
-        <span class="name">EKRIS</span>
+        <span class="name">Ekris</span>
       </span>
       <svg class="arrow" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3.5 10.5 8 6 12.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
