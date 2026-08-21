@@ -4,13 +4,13 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Jonah Thorndike</title>
-<meta name="description" content="Founder of Ares. Links to Ares, the Ekris card, and everywhere else." />
+<meta name="description" content="Links to Ares, the Ekris card, and everywhere else." />
 <meta property="og:title" content="Jonah Thorndike" />
-<meta property="og:description" content="Founder of Ares. Links to Ares, the Ekris card, and everywhere else." />
+<meta property="og:description" content="Links to Ares, the Ekris card, and everywhere else." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://links.aresdeploy.com" />
-<meta name="theme-color" content="#d9e5e5" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230a0a0c'/%3E%3Ctext x='16' y='21.5' font-family='Georgia,serif' font-size='15' fill='%23f5f2ea' text-anchor='middle'%3EJT%3C/text%3E%3C/svg%3E" />
+<meta name="theme-color" content="#050506" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23050506'/%3E%3Ctext x='16' y='21.5' font-family='Georgia,serif' font-size='15' fill='%23f5f2ea' text-anchor='middle'%3EJT%3C/text%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -18,23 +18,20 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
-    /* Sampled from the hero photo's background: pale teal glass, brighter
-       window light toward the top. */
-    --bg: #ccdcdb;
-    --bg-top: #d9e5e5;
-    --bg-deep: #c1d4d2;
-    --ink: #1e2a28;
-    --ink-dim: rgba(30, 42, 40, 0.60);
-    --ink-faint: rgba(30, 42, 40, 0.38);
-    --glass-ink: rgba(35, 48, 46, 0.60);
-    --card: rgba(255, 255, 255, 0.30);
-    --card-hover: rgba(255, 255, 255, 0.46);
+    --bg: #050506;
+    --ink: #f5f2ea;
+    --ink-dim: rgba(245, 242, 234, 0.55);
+    --ink-faint: rgba(245, 242, 234, 0.32);
+    --glass-ink: rgba(235, 235, 240, 0.55);
+    --card: rgba(245, 242, 234, 0.035);
+    --card-hover: rgba(245, 242, 234, 0.07);
+    --ease-out: cubic-bezier(.22, 1, .36, 1);
   }
 
   html { -webkit-text-size-adjust: 100%; }
 
   body {
-    background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg) 45%, var(--bg-deep) 100%) fixed var(--bg);
+    background: var(--bg);
     color: var(--ink);
     font-family: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
     font-size: 16px;
@@ -47,47 +44,73 @@
     overflow-x: hidden;
   }
 
-  /* Hero photo: top of the page, bottom fades into the pills. */
+  /* faint backlight so the black has depth */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(65% 42% at 50% -6%, rgba(245, 242, 234, 0.06), transparent 70%),
+      radial-gradient(50% 34% at 50% 110%, rgba(245, 242, 234, 0.035), transparent 70%);
+  }
+
+  /* ---------- hero ---------- */
+
   .hero {
     width: 100%;
     max-width: 30rem;
     margin: 0 auto;
     position: relative;
+    animation: heroIn 1.1s var(--ease-out) both;
   }
 
-  /* Long eased dissolve — smoothstep stops so there is no visible band
-     where the photo ends and the page begins. */
   .hero img {
     width: 100%;
     display: block;
     -webkit-mask-image: linear-gradient(180deg,
-      #000 50%,
-      rgba(0, 0, 0, 0.99) 58%,
-      rgba(0, 0, 0, 0.95) 65%,
-      rgba(0, 0, 0, 0.86) 72%,
-      rgba(0, 0, 0, 0.70) 79%,
-      rgba(0, 0, 0, 0.48) 85%,
-      rgba(0, 0, 0, 0.26) 91%,
-      rgba(0, 0, 0, 0.09) 96%,
+      #000 46%,
+      rgba(0, 0, 0, 0.99) 55%,
+      rgba(0, 0, 0, 0.95) 63%,
+      rgba(0, 0, 0, 0.85) 70%,
+      rgba(0, 0, 0, 0.68) 77%,
+      rgba(0, 0, 0, 0.46) 84%,
+      rgba(0, 0, 0, 0.24) 90%,
+      rgba(0, 0, 0, 0.08) 96%,
       transparent 100%);
     mask-image: linear-gradient(180deg,
-      #000 50%,
-      rgba(0, 0, 0, 0.99) 58%,
-      rgba(0, 0, 0, 0.95) 65%,
-      rgba(0, 0, 0, 0.86) 72%,
-      rgba(0, 0, 0, 0.70) 79%,
-      rgba(0, 0, 0, 0.48) 85%,
-      rgba(0, 0, 0, 0.26) 91%,
-      rgba(0, 0, 0, 0.09) 96%,
+      #000 46%,
+      rgba(0, 0, 0, 0.99) 55%,
+      rgba(0, 0, 0, 0.95) 63%,
+      rgba(0, 0, 0, 0.85) 70%,
+      rgba(0, 0, 0, 0.68) 77%,
+      rgba(0, 0, 0, 0.46) 84%,
+      rgba(0, 0, 0, 0.24) 90%,
+      rgba(0, 0, 0, 0.08) 96%,
       transparent 100%);
+  }
+
+  /* darkening veil over the fade zone so the light photo settles into
+     black without a grey band */
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg,
+      transparent 40%,
+      rgba(5, 5, 6, 0.12) 62%,
+      rgba(5, 5, 6, 0.42) 80%,
+      rgba(5, 5, 6, 0.75) 92%,
+      var(--bg) 100%);
   }
 
   main {
     width: 100%;
     max-width: 27rem;
-    padding: 0 1.5rem 3.5rem;
+    padding: 0 1.25rem 3.5rem;
     position: relative;
-    margin-top: -1.6rem;
+    margin-top: -2.4rem;
   }
 
   h1 {
@@ -95,7 +118,10 @@
     font-size: 1.7rem;
     text-align: center;
     letter-spacing: -0.01em;
+    animation: rise 0.8s 0.2s var(--ease-out) both;
   }
+
+  /* ---------- rows ---------- */
 
   nav {
     margin-top: 1.9rem;
@@ -104,49 +130,57 @@
     gap: 0.75rem;
   }
 
+  .row {
+    animation: rise 0.7s var(--ease-out) both;
+  }
+  .row:nth-child(1) { animation-delay: 0.30s; }
+  .row:nth-child(2) { animation-delay: 0.38s; }
+  .row:nth-child(3) { animation-delay: 0.46s; }
+  .row:nth-child(4) { animation-delay: 0.54s; }
+  .row:nth-child(5) { animation-delay: 0.62s; }
+  .row:nth-child(6) { animation-delay: 0.70s; }
+
   /* Pills carry the EKRIS card's edge: hairline stroke, top catch-light,
-     shaded underside, faint vertical light falloff, lift shadows below —
-     so each reads as a lit object, not a flat button. */
+     shaded underside, faint vertical light falloff, lift shadows below. */
   .link {
+    width: 100%;
     display: flex;
     align-items: center;
     gap: 0.95rem;
     padding: 0.95rem 1.45rem;
-    border: 1px solid rgba(255, 255, 255, 0.60);
+    border: 1px solid rgba(255, 255, 255, 0.09);
     border-radius: 999px;
     background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0.12) 14%, rgba(255, 255, 255, 0.12) 82%, rgba(96, 118, 116, 0.22) 100%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, transparent 14%, transparent 82%, rgba(0, 0, 0, 0.28) 100%),
       var(--card);
-    backdrop-filter: blur(14px) saturate(160%);
-    -webkit-backdrop-filter: blur(14px) saturate(160%);
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.85),
-      inset 0 -1px 1px rgba(40, 60, 58, 0.25),
-      0 10px 24px rgba(40, 60, 58, 0.20),
-      0 2px 6px rgba(40, 60, 58, 0.13);
-    text-decoration: none;
+      inset 0 1px 0 rgba(255, 255, 255, 0.16),
+      inset 0 -1px 1px rgba(0, 0, 0, 0.55),
+      0 10px 20px rgba(0, 0, 0, 0.55),
+      0 2px 5px rgba(0, 0, 0, 0.4);
     color: var(--ink);
-    transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+    font-family: inherit;
+    font-size: 1rem;
+    text-align: left;
+    cursor: pointer;
+    transition: background 180ms ease, border-color 180ms ease, transform 220ms var(--ease-out);
   }
 
   .link:hover, .link:focus-visible {
     background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0.12) 14%, rgba(255, 255, 255, 0.12) 82%, rgba(96, 118, 116, 0.22) 100%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, transparent 14%, transparent 82%, rgba(0, 0, 0, 0.28) 100%),
       var(--card-hover);
-    border-color: rgba(255, 255, 255, 0.8);
-    transform: translateY(-1px);
+    border-color: rgba(255, 255, 255, 0.18);
+    transform: translateY(-2px);
   }
 
-  .link:active { transform: translateY(0); }
+  .link:active { transform: translateY(0) scale(0.985); }
 
   .link:focus-visible {
-    outline: 1.5px solid rgba(30, 42, 40, 0.5);
+    outline: 1.5px solid rgba(245, 242, 234, 0.5);
     outline-offset: 2px;
   }
 
-  /* Bare badges, EKRIS-card style: no box, the glyph itself is the grey
-     tinted glass — translucent ink with a specular top edge and a shaded
-     underside. */
   .link .icon {
     width: 1.6rem;
     height: 1.6rem;
@@ -161,41 +195,192 @@
     height: 1.35rem;
     fill: var(--glass-ink);
     display: block;
-    filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.55));
+    filter:
+      drop-shadow(0 1px 0 rgba(255, 255, 255, 0.14))
+      drop-shadow(0 2px 5px rgba(0, 0, 0, 0.45));
   }
 
-  /* The Ares mark is stroked, not filled — same glass ink. */
   .icon.ic-ares svg { fill: none; width: 1.45rem; height: auto; }
   .icon.ic-ares svg path { stroke: var(--glass-ink); }
-  /* The Ekris house glyph is wide (1342x894). */
   .icon.ic-ekris svg { width: 1.5rem; height: auto; }
 
-  .link .text { flex: 1; min-width: 0; }
-
-  /* Labels etched in the same tinted glass as the glyphs: translucent
-     ink with a white catch-light beneath, debossed into the surface. */
   .link .name {
+    flex: 1;
+    min-width: 0;
     font-weight: 600;
     font-size: 0.98rem;
     letter-spacing: 0.005em;
     color: var(--glass-ink);
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
   }
-
 
   .link .arrow {
     flex: none;
     color: var(--ink-faint);
-    transition: color 160ms ease, transform 160ms ease;
+    transition: transform 320ms var(--ease-out), color 180ms ease;
   }
 
-  .link:hover .arrow {
-    color: var(--ink-dim);
-    transform: translateX(2px);
+  .link:hover .arrow { color: var(--ink-dim); }
+  .row.open .link .arrow { transform: rotate(90deg); color: var(--ink-dim); }
+
+  /* ---------- drawers ---------- */
+
+  .drawer {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 480ms var(--ease-out);
+  }
+
+  .row.open .drawer { grid-template-rows: 1fr; }
+
+  .drawer-inner { overflow: hidden; min-height: 0; }
+
+  .drawer-pad {
+    padding: 0.85rem 0.35rem 0.5rem;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity 320ms ease, transform 420ms var(--ease-out);
+  }
+
+  .row.open .drawer-pad {
+    opacity: 1;
+    transform: none;
+    transition-delay: 120ms;
+  }
+
+  /* browser-chrome frame, same glass language as the pills */
+  .frame {
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 18px;
+    overflow: hidden;
+    background: #0b0b0d;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.10),
+      0 14px 30px rgba(0, 0, 0, 0.6),
+      0 3px 8px rgba(0, 0, 0, 0.45);
+  }
+
+  .frame-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.55rem 0.8rem;
+    background: rgba(255, 255, 255, 0.045);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  .frame-bar i {
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.16);
+  }
+
+  .frame-bar .url {
+    flex: 1;
+    margin-left: 0.35rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.01em;
+    color: var(--ink-faint);
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 999px;
+    padding: 0.18rem 0.7rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .frame-body {
+    position: relative;
+    height: min(108vw, 430px);
+    overflow: hidden;
+    background: #0b0b0d;
+  }
+
+  .frame-body iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+    background: #0b0b0d;
+  }
+
+  .frame-body img.kb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    animation: kenburns 26s ease-in-out infinite alternate;
+  }
+
+  .p-ig  { object-position: center -96px; }
+  .p-x   { object-position: center -100px; }
+  .p-yt  { object-position: center top; }
+
+  @keyframes kenburns {
+    from { transform: scale(1) translateY(0); }
+    to   { transform: scale(1.08) translateY(-3.5%); }
+  }
+
+  /* linkedin designed card (no anonymous embed exists) */
+  .li-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    text-align: center;
+    padding: 1.5rem;
+    background:
+      radial-gradient(80% 60% at 50% 0%, rgba(10, 102, 194, 0.16), transparent 70%),
+      #0b0b0d;
+  }
+
+  .li-card svg { width: 2.4rem; height: 2.4rem; fill: rgba(235, 235, 240, 0.75); }
+  .li-card .li-name { font-weight: 600; font-size: 1.15rem; }
+  .li-card .li-sub { color: var(--ink-dim); font-size: 0.88rem; max-width: 16rem; }
+
+  .cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.7rem;
+    padding: 0.8rem 1.3rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(22px) saturate(180%);
+    -webkit-backdrop-filter: blur(22px) saturate(180%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.22),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.35),
+      0 8px 22px rgba(0, 0, 0, 0.45);
+    color: var(--ink);
+    font-weight: 600;
+    font-size: 0.92rem;
+    text-decoration: none;
+    transition: background 180ms ease, border-color 180ms ease, transform 220ms var(--ease-out);
+  }
+
+  .cta:hover { background: rgba(255, 255, 255, 0.11); border-color: rgba(255, 255, 255, 0.2); transform: translateY(-1px); }
+  .cta:active { transform: scale(0.985); }
+  .cta svg { width: 0.85rem; height: 0.85rem; }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  @keyframes heroIn {
+    from { opacity: 0; transform: scale(1.03); }
+    to   { opacity: 1; transform: none; }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .link, .link .arrow { transition: none; }
+    .hero, h1, .row, .link, .link .arrow, .drawer, .drawer-pad, .cta { animation: none; transition: none; }
+    .frame-body img.kb { animation: none; }
   }
 </style>
 </head>
@@ -205,71 +390,161 @@
   <h1>Jonah Thorndike</h1>
 
   <nav aria-label="Links">
-    <a class="link" href="https://aresdeploy.com" >
-      <span class="icon ic-ares" aria-hidden="true">
-        <svg viewBox="0 0 276 230" fill="none"><path d="M10.1417 57.9795L38.5394 10.4868C38.72 10.1849 39.0459 10 39.3977 10H236.759C237.113 10 237.441 10.1872 237.621 10.4922L265.026 56.9829C265.213 57.3012 265.21 57.6969 265.018 58.0122L166.623 219.021C166.441 219.319 166.118 219.5 165.77 219.5H109.39C109.042 219.5 108.72 219.32 108.538 219.024L10.1481 59.0165C9.95292 58.6991 9.95045 58.2994 10.1417 57.9795Z" stroke="#FF0000" stroke-width="20"/><path d="M86.1446 82.4238L97.2299 63.9848C97.4107 63.684 97.736 63.5 98.0869 63.5H176.973C177.326 63.5 177.653 63.6863 177.833 63.9901L188.523 82.0262C188.712 82.3455 188.709 82.7433 188.515 83.0595L149.213 147.024C149.031 147.32 148.709 147.5 148.361 147.5H126.298C125.951 147.5 125.63 147.321 125.447 147.026L86.1511 83.4649C85.9542 83.1464 85.9517 82.7447 86.1446 82.4238Z" stroke="#FF0000" stroke-width="10"/></svg>
-      </span>
-      <span class="text">
+
+    <div class="row">
+      <button class="link" aria-expanded="false" aria-controls="d-ares">
+        <span class="icon ic-ares" aria-hidden="true">
+          <svg viewBox="0 0 276 230" fill="none"><path d="M10.1417 57.9795L38.5394 10.4868C38.72 10.1849 39.0459 10 39.3977 10H236.759C237.113 10 237.441 10.1872 237.621 10.4922L265.026 56.9829C265.213 57.3012 265.21 57.6969 265.018 58.0122L166.623 219.021C166.441 219.319 166.118 219.5 165.77 219.5H109.39C109.042 219.5 108.72 219.32 108.538 219.024L10.1481 59.0165C9.95292 58.6991 9.95045 58.2994 10.1417 57.9795Z" stroke="#FF0000" stroke-width="20"/><path d="M86.1446 82.4238L97.2299 63.9848C97.4107 63.684 97.736 63.5 98.0869 63.5H176.973C177.326 63.5 177.653 63.6863 177.833 63.9901L188.523 82.0262C188.712 82.3455 188.709 82.7433 188.515 83.0595L149.213 147.024C149.031 147.32 148.709 147.5 148.361 147.5H126.298C125.951 147.5 125.63 147.321 125.447 147.026L86.1511 83.4649C85.9542 83.1464 85.9517 82.7447 86.1446 82.4238Z" stroke="#FF0000" stroke-width="10"/></svg>
+        </span>
         <span class="name">Ares</span>
-      </span>
-      <svg class="arrow" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3.5 10.5 8 6 12.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
+        <svg class="arrow" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3.5 10.5 8 6 12.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="drawer" id="d-ares" aria-hidden="true">
+        <div class="drawer-inner"><div class="drawer-pad">
+          <div class="frame">
+            <div class="frame-bar"><i></i><i></i><i></i><span class="url">aresdeploy.com</span></div>
+            <div class="frame-body"><iframe data-src="https://aresdeploy.com" title="Ares — live preview" loading="lazy"></iframe></div>
+          </div>
+          <a class="cta" href="https://aresdeploy.com">Open Ares
+            <svg viewBox="0 0 16 16" fill="none"><path d="M6 3.5 10.5 8 6 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div></div>
+      </div>
+    </div>
 
-    <a class="link" href="https://cards-production-3955.up.railway.app/c/zW7bWWoyHakacF4j-2ymUA">
-      <span class="icon ic-ekris" aria-hidden="true">
-        <svg viewBox="0 0 1342 894"><path d="M432.5 53.84C437.21 54.94 439.42 60.45 442.18 64.3C449.01 73.85 455.59 83.61 462.23 93.27C482.01 122.05 501.73 151.01 522.28 179.24C527.75 186.75 532.98 194.49 538.54 201.93C541.91 206.43 547.12 212.18 548.57 217.5C539.93 219.66 529.4 218.13 520.5 218.14C502.83 218.14 485.17 218.31 467.5 218.16C460.83 218.1 454.16 218.16 447.5 218.25C444.73 218.29 440.81 217.62 438.21 218.66C434.79 220.02 428.28 231.8 425.77 235.27C415.39 249.61 405.75 264.49 395.33 278.8C379.86 300.03 364.57 321.58 349.92 343.38C346.19 348.94 342.24 354.39 338.36 359.84C336.91 361.89 334 364.9 333.82 367.51C333.58 370.93 339.99 379.39 342.01 382.47C350.19 394.95 358.56 407.28 366.94 419.62C399.83 468.03 433.17 516.11 465.94 564.62C491.02 601.74 517.43 637.98 542.29 675.24C549.07 685.39 556.19 695.32 563.05 705.42C565.14 708.51 568.31 715.2 571.98 716.47C575.82 717.8 581.47 716.9 585.5 716.87C595.17 716.8 604.83 716.77 614.5 716.8C647.83 716.92 681.17 716.91 714.5 716.73C725.83 716.66 737.17 716.77 748.5 716.82C752.84 716.84 759.91 718.1 763.93 716.41C766.68 715.26 769.1 710.62 770.78 708.28C775.23 702.07 779.95 696.06 784.17 689.69C797.84 669.05 813.26 649.33 827.58 629.12C869.64 569.8 912.65 510.94 952.92 450.39C964.56 432.89 976.49 415.33 988.73 398.25C994.59 390.07 1005.12 376.53 1008.42 367.5C1002.16 355.27 992.54 344.1 984.61 332.88C966.8 307.69 948.69 282.69 931.15 257.32C924.76 248.08 918.01 239.09 911.68 229.79C910.03 227.37 905.49 219.56 903.11 218.46C900.48 217.24 896.34 218 893.5 218C886.83 218.01 880.17 217.96 873.5 217.94C856.17 217.91 838.83 217.92 821.5 217.98C812.3 218.01 802.23 219.09 793.19 217.5C793.86 212.69 798.41 207.85 801.4 203.88C807.42 195.9 813.16 187.69 819.1 179.64C840.37 150.84 861.35 121.57 881.43 91.93C887.74 82.61 894.36 73.52 900.79 64.28C903.54 60.33 905.66 54.99 910.5 53.83C918.07 60.59 922.86 71.51 928.66 79.82C941.98 98.89 954.67 118.34 968.1 137.35C994.05 174.08 1020.25 210.69 1045.93 247.62C1062.82 271.9 1079.37 296.68 1097.17 320.3C1114.56 343.38 1130.53 367.53 1147.59 390.88C1152.38 397.44 1157.04 404.11 1161.66 410.8C1163.26 413.13 1166.65 416.68 1166.93 419.53C1167.21 422.3 1164.98 424.92 1163.62 427.14C1160.43 432.3 1157.43 437.57 1154.16 442.68C1144.52 457.76 1135.18 473.05 1125.68 488.22C1121.8 494.42 1118.37 501.59 1113.65 507.21C1110.1 511.44 1094.14 509.54 1088.5 509.58C1071.5 509.7 1054.5 509.75 1037.5 509.66C1032.65 509.63 1018.52 508.48 1014.69 510.15C1012.45 511.13 1007.68 519.29 1006.09 521.64C999.5 531.31 992.46 540.67 985.91 550.36C967.56 577.53 947.93 603.81 929.38 630.85C924.11 638.53 918.78 646.25 913.33 653.8C910.59 657.59 907.59 661.12 905.89 665.5C922.89 690.83 939.88 716.17 956.88 741.5C955.79 747.11 948.04 755.08 944.37 759.84C933.91 773.37 923.67 787.11 912.91 800.39C910.05 803.91 902.35 816.16 898.48 817.11C893.94 818.23 888.16 817.26 883.5 817.28C872.17 817.34 860.83 817.33 849.5 817.33C814.17 817.3 778.83 817.5 743.5 817.67C675.83 817.98 608.17 817.86 540.5 817.99C518.17 818.04 495.83 818.06 473.5 818.03C464.76 818.02 449.5 819.3 441.52 817.9C437.49 817.19 429.63 805.22 426.91 801.61C416.32 787.56 405.75 773.46 394.96 759.56C392.5 756.39 383.13 745.9 382.89 742.49C382.72 740.12 384.58 738.16 385.81 736.31C389.14 731.32 392.75 726.5 395.98 721.45C404.14 708.71 412.73 696.24 421.21 683.72C425.2 677.83 429.87 671.89 432.97 665.5C430.32 659.13 425.39 653.67 421.51 647.99C416.65 640.86 411.81 633.68 406.98 626.52C389.97 601.29 371.84 576.69 355.5 551.02C349.19 541.11 341.89 531.81 335.58 521.91C334 519.43 329.67 511.29 327.29 510.18C323.37 508.36 308.51 509.58 303.5 509.62C287.17 509.75 270.83 509.58 254.5 509.58C248.08 509.58 237.43 511.05 231.49 509.25C226.69 507.8 219.3 492.8 216.36 488.16C206.8 473.03 197.36 457.83 187.88 442.65C183.86 436.23 178.06 429.23 175.4 422.14C173.31 416.59 184.48 404.25 187.94 399.4C202.95 378.41 218.02 357.45 232.86 336.34C261.72 295.3 291.29 254.74 320.41 213.89C338.62 188.36 356.09 162.33 374.45 136.92C388.06 118.1 400.85 98.56 413.92 79.37C417.86 73.59 427.54 56.98 432.5 53.84Z"/></svg>
-      </span>
-      <span class="text">
+    <div class="row">
+      <button class="link" aria-expanded="false" aria-controls="d-ekris">
+        <span class="icon ic-ekris" aria-hidden="true">
+          <svg viewBox="0 0 1342 894"><path d="M432.5 53.84C437.21 54.94 439.42 60.45 442.18 64.3C449.01 73.85 455.59 83.61 462.23 93.27C482.01 122.05 501.73 151.01 522.28 179.24C527.75 186.75 532.98 194.49 538.54 201.93C541.91 206.43 547.12 212.18 548.57 217.5C539.93 219.66 529.4 218.13 520.5 218.14C502.83 218.14 485.17 218.31 467.5 218.16C460.83 218.1 454.16 218.16 447.5 218.25C444.73 218.29 440.81 217.62 438.21 218.66C434.79 220.02 428.28 231.8 425.77 235.27C415.39 249.61 405.75 264.49 395.33 278.8C379.86 300.03 364.57 321.58 349.92 343.38C346.19 348.94 342.24 354.39 338.36 359.84C336.91 361.89 334 364.9 333.82 367.51C333.58 370.93 339.99 379.39 342.01 382.47C350.19 394.95 358.56 407.28 366.94 419.62C399.83 468.03 433.17 516.11 465.94 564.62C491.02 601.74 517.43 637.98 542.29 675.24C549.07 685.39 556.19 695.32 563.05 705.42C565.14 708.51 568.31 715.2 571.98 716.47C575.82 717.8 581.47 716.9 585.5 716.87C595.17 716.8 604.83 716.77 614.5 716.8C647.83 716.92 681.17 716.91 714.5 716.73C725.83 716.66 737.17 716.77 748.5 716.82C752.84 716.84 759.91 718.1 763.93 716.41C766.68 715.26 769.1 710.62 770.78 708.28C775.23 702.07 779.95 696.06 784.17 689.69C797.84 669.05 813.26 649.33 827.58 629.12C869.64 569.8 912.65 510.94 952.92 450.39C964.56 432.89 976.49 415.33 988.73 398.25C994.59 390.07 1005.12 376.53 1008.42 367.5C1002.16 355.27 992.54 344.1 984.61 332.88C966.8 307.69 948.69 282.69 931.15 257.32C924.76 248.08 918.01 239.09 911.68 229.79C910.03 227.37 905.49 219.56 903.11 218.46C900.48 217.24 896.34 218 893.5 218C886.83 218.01 880.17 217.96 873.5 217.94C856.17 217.91 838.83 217.92 821.5 217.98C812.3 218.01 802.23 219.09 793.19 217.5C793.86 212.69 798.41 207.85 801.4 203.88C807.42 195.9 813.16 187.69 819.1 179.64C840.37 150.84 861.35 121.57 881.43 91.93C887.74 82.61 894.36 73.52 900.79 64.28C903.54 60.33 905.66 54.99 910.5 53.83C918.07 60.59 922.86 71.51 928.66 79.82C941.98 98.89 954.67 118.34 968.1 137.35C994.05 174.08 1020.25 210.69 1045.93 247.62C1062.82 271.9 1079.37 296.68 1097.17 320.3C1114.56 343.38 1130.53 367.53 1147.59 390.88C1152.38 397.44 1157.04 404.11 1161.66 410.8C1163.26 413.13 1166.65 416.68 1166.93 419.53C1167.21 422.3 1164.98 424.92 1163.62 427.14C1160.43 432.3 1157.43 437.57 1154.16 442.68C1144.52 457.76 1135.18 473.05 1125.68 488.22C1121.8 494.42 1118.37 501.59 1113.65 507.21C1110.1 511.44 1094.14 509.54 1088.5 509.58C1071.5 509.7 1054.5 509.75 1037.5 509.66C1032.65 509.63 1018.52 508.48 1014.69 510.15C1012.45 511.13 1007.68 519.29 1006.09 521.64C999.5 531.31 992.46 540.67 985.91 550.36C967.56 577.53 947.93 603.81 929.38 630.85C924.11 638.53 918.78 646.25 913.33 653.8C910.59 657.59 907.59 661.12 905.89 665.5C922.89 690.83 939.88 716.17 956.88 741.5C955.79 747.11 948.04 755.08 944.37 759.84C933.91 773.37 923.67 787.11 912.91 800.39C910.05 803.91 902.35 816.16 898.48 817.11C893.94 818.23 888.16 817.26 883.5 817.28C872.17 817.34 860.83 817.33 849.5 817.33C814.17 817.3 778.83 817.5 743.5 817.67C675.83 817.98 608.17 817.86 540.5 817.99C518.17 818.04 495.83 818.06 473.5 818.03C464.76 818.02 449.5 819.3 441.52 817.9C437.49 817.19 429.63 805.22 426.91 801.61C416.32 787.56 405.75 773.46 394.96 759.56C392.5 756.39 383.13 745.9 382.89 742.49C382.72 740.12 384.58 738.16 385.81 736.31C389.14 731.32 392.75 726.5 395.98 721.45C404.14 708.71 412.73 696.24 421.21 683.72C425.2 677.83 429.87 671.89 432.97 665.5C430.32 659.13 425.39 653.67 421.51 647.99C416.65 640.86 411.81 633.68 406.98 626.52C389.97 601.29 371.84 576.69 355.5 551.02C349.19 541.11 341.89 531.81 335.58 521.91C334 519.43 329.67 511.29 327.29 510.18C323.37 508.36 308.51 509.58 303.5 509.62C287.17 509.75 270.83 509.58 254.5 509.58C248.08 509.58 237.43 511.05 231.49 509.25C226.69 507.8 219.3 492.8 216.36 488.16C206.8 473.03 197.36 457.83 187.88 442.65C183.86 436.23 178.06 429.23 175.4 422.14C173.31 416.59 184.48 404.25 187.94 399.4C202.95 378.41 218.02 357.45 232.86 336.34C261.72 295.3 291.29 254.74 320.41 213.89C338.62 188.36 356.09 162.33 374.45 136.92C388.06 118.1 400.85 98.56 413.92 79.37C417.86 73.59 427.54 56.98 432.5 53.84Z"/></svg>
+        </span>
         <span class="name">Ekris</span>
-      </span>
-      <svg class="arrow" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3.5 10.5 8 6 12.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
-    <a class="link" href="https://www.instagram.com/aresaiagent/" data-app="instagram://user?username=aresaiagent">
-      <span class="icon ic-ig" aria-hidden="true">
-        <svg viewBox="0 0 24 24"><path d="M12 4.2c2.54 0 2.84.01 3.84.06.93.04 1.43.2 1.77.33.44.17.76.38 1.09.71.33.33.54.65.71 1.09.13.34.29.84.33 1.77.05 1 .06 1.3.06 3.84s-.01 2.84-.06 3.84c-.04.93-.2 1.43-.33 1.77-.17.44-.38.76-.71 1.09a2.93 2.93 0 0 1-1.09.71c-.34.13-.84.29-1.77.33-1 .05-1.3.06-3.84.06s-2.84-.01-3.84-.06c-.93-.04-1.43-.2-1.77-.33a2.93 2.93 0 0 1-1.09-.71 2.93 2.93 0 0 1-.71-1.09c-.13-.34-.29-.84-.33-1.77-.05-1-.06-1.3-.06-3.84s.01-2.84.06-3.84c.04-.93.2-1.43.33-1.77.17-.44.38-.76.71-1.09.33-.33.65-.54 1.09-.71.34-.13.84-.29 1.77-.33 1-.05 1.3-.06 3.84-.06ZM12 2.4c-2.61 0-2.93.01-3.95.06-1.02.05-1.72.21-2.33.45-.63.24-1.17.57-1.7 1.11-.54.53-.87 1.07-1.11 1.7-.24.61-.4 1.31-.45 2.33-.05 1.02-.06 1.34-.06 3.95s.01 2.93.06 3.95c.05 1.02.21 1.72.45 2.33.24.63.57 1.17 1.11 1.7.53.54 1.07.87 1.7 1.11.61.24 1.31.4 2.33.45 1.02.05 1.34.06 3.95.06s2.93-.01 3.95-.06c1.02-.05 1.72-.21 2.33-.45a4.71 4.71 0 0 0 1.7-1.11c.54-.53.87-1.07 1.11-1.7.24-.61.4-1.31.45-2.33.05-1.02.06-1.34.06-3.95s-.01-2.93-.06-3.95c-.05-1.02-.21-1.72-.45-2.33a4.71 4.71 0 0 0-1.11-1.7 4.71 4.71 0 0 0-1.7-1.11c-.61-.24-1.31-.4-2.33-.45-1.02-.05-1.34-.06-3.95-.06Zm0 4.67a4.93 4.93 0 1 0 0 9.86 4.93 4.93 0 0 0 0-9.86Zm0 8.13a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4Zm6.28-8.32a1.15 1.15 0 1 1-2.3 0 1.15 1.15 0 0 1 2.3 0Z"/></svg>
-      </span>
-      <span class="text">
+        <svg class="arrow" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3.5 10.5 8 6 12.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="drawer" id="d-ekris" aria-hidden="true">
+        <div class="drawer-inner"><div class="drawer-pad">
+          <div class="frame">
+            <div class="frame-bar"><i></i><i></i><i></i><span class="url">ekris — live card</span></div>
+            <div class="frame-body"><iframe data-src="https://cards-production-3955.up.railway.app/c/zW7bWWoyHakacF4j-2ymUA" title="Ekris card — live" loading="lazy"></iframe></div>
+          </div>
+          <a class="cta" href="https://cards-production-3955.up.railway.app/c/zW7bWWoyHakacF4j-2ymUA">Open the card
+            <svg viewBox="0 0 16 16" fill="none"><path d="M6 3.5 10.5 8 6 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <button class="link" aria-expanded="false" aria-controls="d-ig">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 4.2c2.54 0 2.84.01 3.84.06.93.04 1.43.2 1.77.33.44.17.76.38 1.09.71.33.33.54.65.71 1.09.13.34.29.84.33 1.77.05 1 .06 1.3.06 3.84s-.01 2.84-.06 3.84c-.04.93-.2 1.43-.33 1.77-.17.44-.38.76-.71 1.09a2.93 2.93 0 0 1-1.09.71c-.34.13-.84.29-1.77.33-1 .05-1.3.06-3.84.06s-2.84-.01-3.84-.06c-.93-.04-1.43-.2-1.77-.33a2.93 2.93 0 0 1-1.09-.71 2.93 2.93 0 0 1-.71-1.09c-.13-.34-.29-.84-.33-1.77-.05-1-.06-1.3-.06-3.84s.01-2.84.06-3.84c.04-.93.2-1.43.33-1.77.17-.44.38-.76.71-1.09.33-.33.65-.54 1.09-.71.34-.13.84-.29 1.77-.33 1-.05 1.3-.06 3.84-.06ZM12 2.4c-2.61 0-2.93.01-3.95.06-1.02.05-1.72.21-2.33.45-.63.24-1.17.57-1.7 1.11-.54.53-.87 1.07-1.11 1.7-.24.61-.4 1.31-.45 2.33-.05 1.02-.06 1.34-.06 3.95s.01 2.93.06 3.95c.05 1.02.21 1.72.45 2.33.24.63.57 1.17 1.11 1.7.53.54 1.07.87 1.7 1.11.61.24 1.31.4 2.33.45 1.02.05 1.34.06 3.95.06s2.93-.01 3.95-.06c1.02-.05 1.72-.21 2.33-.45a4.71 4.71 0 0 0 1.7-1.11c.54-.53.87-1.07 1.11-1.7.24-.61.4-1.31.45-2.33.05-1.02.06-1.34.06-3.95s-.01-2.93-.06-3.95c-.05-1.02-.21-1.72-.45-2.33a4.71 4.71 0 0 0-1.11-1.7 4.71 4.71 0 0 0-1.7-1.11c-.61-.24-1.31-.4-2.33-.45-1.02-.05-1.34-.06-3.95-.06Zm0 4.67a4.93 4.93 0 1 0 0 9.86 4.93 4.93 0 0 0 0-9.86Zm0 8.13a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4Zm6.28-8.32a1.15 1.15 0 1 1-2.3 0 1.15 1.15 0 0 1 2.3 0Z"/></svg>
+        </span>
         <span class="name">Instagram</span>
-      </span>
-      <svg class="arrow" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3.5 10.5 8 6 12.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
+        <svg class="arrow" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3.5 10.5 8 6 12.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="drawer" id="d-ig" aria-hidden="true">
+        <div class="drawer-inner"><div class="drawer-pad">
+          <div class="frame">
+            <div class="frame-bar"><i></i><i></i><i></i><span class="url">instagram.com/aresaiagent</span></div>
+            <div class="frame-body"><img class="kb p-ig" src="previews/instagram.jpg" alt="Instagram — @aresaiagent" loading="lazy" /></div>
+          </div>
+          <a class="cta" href="https://www.instagram.com/aresaiagent/" data-app="instagram://user?username=aresaiagent">Open Instagram
+            <svg viewBox="0 0 16 16" fill="none"><path d="M6 3.5 10.5 8 6 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div></div>
+      </div>
+    </div>
 
-    <a class="link" href="https://x.com/aresaiagent" data-app="twitter://user?screen_name=aresaiagent">
-      <span class="icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24"><path d="M17.75 3h3.07l-6.7 7.66L22 21h-6.17l-4.84-6.32L5.46 21H2.38l7.17-8.2L2 3h6.33l4.37 5.78L17.75 3Zm-1.08 16.16h1.7L7.4 4.74H5.57l11.1 14.42Z"/></svg>
-      </span>
-      <span class="text">
+    <div class="row">
+      <button class="link" aria-expanded="false" aria-controls="d-x">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M17.75 3h3.07l-6.7 7.66L22 21h-6.17l-4.84-6.32L5.46 21H2.38l7.17-8.2L2 3h6.33l4.37 5.78L17.75 3Zm-1.08 16.16h1.7L7.4 4.74H5.57l11.1 14.42Z"/></svg>
+        </span>
         <span class="name">X</span>
-      </span>
-      <svg class="arrow" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3.5 10.5 8 6 12.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
+        <svg class="arrow" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3.5 10.5 8 6 12.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="drawer" id="d-x" aria-hidden="true">
+        <div class="drawer-inner"><div class="drawer-pad">
+          <div class="frame">
+            <div class="frame-bar"><i></i><i></i><i></i><span class="url">x.com/aresaiagent</span></div>
+            <div class="frame-body"><img class="kb p-x" src="previews/x.jpg" alt="X — @aresaiagent" loading="lazy" /></div>
+          </div>
+          <a class="cta" href="https://x.com/aresaiagent" data-app="twitter://user?screen_name=aresaiagent">Open X
+            <svg viewBox="0 0 16 16" fill="none"><path d="M6 3.5 10.5 8 6 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div></div>
+      </div>
+    </div>
 
-    <a class="link" href="https://www.youtube.com/@aresaiagent" data-app="youtube://www.youtube.com/@aresaiagent">
-      <span class="icon ic-yt" aria-hidden="true">
-        <svg viewBox="0 0 24 24"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.76-1.77C18.28 5 12 5 12 5s-6.28 0-7.84.43A2.5 2.5 0 0 0 2.4 7.2 26.2 26.2 0 0 0 2 12c0 1.62.13 3.23.4 4.8a2.5 2.5 0 0 0 1.76 1.77C5.72 19 12 19 12 19s6.28 0 7.84-.43a2.5 2.5 0 0 0 1.76-1.77c.27-1.57.4-3.18.4-4.8s-.13-3.23-.4-4.8ZM10 15.2V8.8l5.2 3.2-5.2 3.2Z"/></svg>
-      </span>
-      <span class="text">
+    <div class="row">
+      <button class="link" aria-expanded="false" aria-controls="d-yt">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.76-1.77C18.28 5 12 5 12 5s-6.28 0-7.84.43A2.5 2.5 0 0 0 2.4 7.2 26.2 26.2 0 0 0 2 12c0 1.62.13 3.23.4 4.8a2.5 2.5 0 0 0 1.76 1.77C5.72 19 12 19 12 19s6.28 0 7.84-.43a2.5 2.5 0 0 0 1.76-1.77c.27-1.57.4-3.18.4-4.8s-.13-3.23-.4-4.8ZM10 15.2V8.8l5.2 3.2-5.2 3.2Z"/></svg>
+        </span>
         <span class="name">YouTube</span>
-      </span>
-      <svg class="arrow" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3.5 10.5 8 6 12.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
+        <svg class="arrow" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3.5 10.5 8 6 12.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="drawer" id="d-yt" aria-hidden="true">
+        <div class="drawer-inner"><div class="drawer-pad">
+          <div class="frame">
+            <div class="frame-bar"><i></i><i></i><i></i><span class="url">youtube.com/@aresaiagent</span></div>
+            <div class="frame-body"><img class="kb p-yt" src="previews/youtube.jpg" alt="YouTube — Ares" loading="lazy" /></div>
+          </div>
+          <a class="cta" href="https://www.youtube.com/@aresaiagent" data-app="youtube://www.youtube.com/@aresaiagent">Open YouTube
+            <svg viewBox="0 0 16 16" fill="none"><path d="M6 3.5 10.5 8 6 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div></div>
+      </div>
+    </div>
 
-    <a class="link" href="https://www.linkedin.com/in/jonah-thorndike-45229741a/" data-app="linkedin://in/jonah-thorndike-45229741a">
-      <span class="icon ic-li" aria-hidden="true">
-        <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.1 2.1 0 1 1 0 4.2 2.1 2.1 0 0 1 0-4.2ZM3.16 9.24h3.66V20.5H3.16V9.24Zm5.83 0h3.51v1.54h.05c.49-.92 1.68-1.9 3.46-1.9 3.7 0 4.39 2.44 4.39 5.6v6.02h-3.66v-5.34c0-1.27-.02-2.91-1.77-2.91-1.78 0-2.05 1.39-2.05 2.82v5.43H8.99V9.24Z"/></svg>
-      </span>
-      <span class="text">
+    <div class="row">
+      <button class="link" aria-expanded="false" aria-controls="d-li">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.1 2.1 0 1 1 0 4.2 2.1 2.1 0 0 1 0-4.2ZM3.16 9.24h3.66V20.5H3.16V9.24Zm5.83 0h3.51v1.54h.05c.49-.92 1.68-1.9 3.46-1.9 3.7 0 4.39 2.44 4.39 5.6v6.02h-3.66v-5.34c0-1.27-.02-2.91-1.77-2.91-1.78 0-2.05 1.39-2.05 2.82v5.43H8.99V9.24Z"/></svg>
+        </span>
         <span class="name">LinkedIn</span>
-      </span>
-      <svg class="arrow" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3.5 10.5 8 6 12.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
-  </nav>
+        <svg class="arrow" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3.5 10.5 8 6 12.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="drawer" id="d-li" aria-hidden="true">
+        <div class="drawer-inner"><div class="drawer-pad">
+          <div class="frame">
+            <div class="frame-bar"><i></i><i></i><i></i><span class="url">linkedin.com/in/jonah-thorndike</span></div>
+            <div class="frame-body">
+              <div class="li-card">
+                <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.1 2.1 0 1 1 0 4.2 2.1 2.1 0 0 1 0-4.2ZM3.16 9.24h3.66V20.5H3.16V9.24Zm5.83 0h3.51v1.54h.05c.49-.92 1.68-1.9 3.46-1.9 3.7 0 4.39 2.44 4.39 5.6v6.02h-3.66v-5.34c0-1.27-.02-2.91-1.77-2.91-1.78 0-2.05 1.39-2.05 2.82v5.43H8.99V9.24Z"/></svg>
+                <div class="li-name">Jonah Thorndike</div>
+                <div class="li-sub">Connect with me on LinkedIn</div>
+              </div>
+            </div>
+          </div>
+          <a class="cta" href="https://www.linkedin.com/in/jonah-thorndike-45229741a/" data-app="linkedin://in/jonah-thorndike-45229741a">Open LinkedIn
+            <svg viewBox="0 0 16 16" fill="none"><path d="M6 3.5 10.5 8 6 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div></div>
+      </div>
+    </div>
 
+  </nav>
 </main>
 <script>
-  // On phones, try the native app first; fall back to the web profile if the
-  // app doesn't take over the page within the grace period.
   (function () {
+    // Accordion: one drawer open at a time. Live iframes load on first open.
+    var rows = Array.prototype.slice.call(document.querySelectorAll(".row"));
+    rows.forEach(function (row) {
+      var btn = row.querySelector(".link");
+      var drawer = row.querySelector(".drawer");
+      btn.addEventListener("click", function () {
+        var wasOpen = row.classList.contains("open");
+        rows.forEach(function (r) {
+          r.classList.remove("open");
+          r.querySelector(".link").setAttribute("aria-expanded", "false");
+          r.querySelector(".drawer").setAttribute("aria-hidden", "true");
+        });
+        if (!wasOpen) {
+          row.classList.add("open");
+          btn.setAttribute("aria-expanded", "true");
+          drawer.setAttribute("aria-hidden", "false");
+          var ifr = row.querySelector("iframe[data-src]");
+          if (ifr && !ifr.getAttribute("src")) ifr.setAttribute("src", ifr.getAttribute("data-src"));
+        }
+      });
+    });
+
+    // On phones, try the native app first; fall back to the web profile if
+    // the app doesn't take over the page within the grace period.
     var mobile = /iphone|ipad|ipod|android/i.test(navigator.userAgent);
     if (!mobile) return;
     document.querySelectorAll("a[data-app]").forEach(function (a) {
