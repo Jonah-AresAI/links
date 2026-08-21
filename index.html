@@ -9,7 +9,7 @@
 <meta property="og:description" content="Founder of Ares. Links to Ares, the Ekris card, and everywhere else." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://links.aresdeploy.com" />
-<meta name="theme-color" content="#0a0a0c" />
+<meta name="theme-color" content="#d9e5e5" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230a0a0c'/%3E%3Ctext x='16' y='21.5' font-family='Georgia,serif' font-size='15' fill='%23f5f2ea' text-anchor='middle'%3EJT%3C/text%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -18,19 +18,23 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
-    --bg: #0a0a0c;
-    --ink: #f5f2ea;
-    --ink-dim: rgba(245, 242, 234, 0.55);
-    --ink-faint: rgba(245, 242, 234, 0.32);
-    --line: rgba(245, 242, 234, 0.10);
-    --card: rgba(245, 242, 234, 0.035);
-    --card-hover: rgba(245, 242, 234, 0.07);
+    /* Sampled from the hero photo's background: pale teal glass, brighter
+       window light toward the top. */
+    --bg: #ccdcdb;
+    --bg-top: #d9e5e5;
+    --bg-deep: #c1d4d2;
+    --ink: #1e2a28;
+    --ink-dim: rgba(30, 42, 40, 0.60);
+    --ink-faint: rgba(30, 42, 40, 0.38);
+    --glass-ink: rgba(35, 48, 46, 0.60);
+    --card: rgba(255, 255, 255, 0.30);
+    --card-hover: rgba(255, 255, 255, 0.46);
   }
 
   html { -webkit-text-size-adjust: 100%; }
 
   body {
-    background: var(--bg);
+    background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg) 45%, var(--bg-deep) 100%) fixed var(--bg);
     color: var(--ink);
     font-family: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
     font-size: 16px;
@@ -43,17 +47,6 @@
     overflow-x: hidden;
   }
 
-  /* soft top glow */
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    background:
-      radial-gradient(60% 40% at 50% -5%, rgba(245, 242, 234, 0.07), transparent 70%),
-      radial-gradient(45% 30% at 50% 108%, rgba(245, 242, 234, 0.04), transparent 70%);
-  }
-
   /* Hero photo: top of the page, bottom fades into the pills. */
   .hero {
     width: 100%;
@@ -62,11 +55,31 @@
     position: relative;
   }
 
+  /* Long eased dissolve — smoothstep stops so there is no visible band
+     where the photo ends and the page begins. */
   .hero img {
     width: 100%;
     display: block;
-    -webkit-mask-image: linear-gradient(180deg, #000 58%, transparent 100%);
-    mask-image: linear-gradient(180deg, #000 58%, transparent 100%);
+    -webkit-mask-image: linear-gradient(180deg,
+      #000 50%,
+      rgba(0, 0, 0, 0.99) 58%,
+      rgba(0, 0, 0, 0.95) 65%,
+      rgba(0, 0, 0, 0.86) 72%,
+      rgba(0, 0, 0, 0.70) 79%,
+      rgba(0, 0, 0, 0.48) 85%,
+      rgba(0, 0, 0, 0.26) 91%,
+      rgba(0, 0, 0, 0.09) 96%,
+      transparent 100%);
+    mask-image: linear-gradient(180deg,
+      #000 50%,
+      rgba(0, 0, 0, 0.99) 58%,
+      rgba(0, 0, 0, 0.95) 65%,
+      rgba(0, 0, 0, 0.86) 72%,
+      rgba(0, 0, 0, 0.70) 79%,
+      rgba(0, 0, 0, 0.48) 85%,
+      rgba(0, 0, 0, 0.26) 91%,
+      rgba(0, 0, 0, 0.09) 96%,
+      transparent 100%);
   }
 
   main {
@@ -74,7 +87,7 @@
     max-width: 27rem;
     padding: 0 1.5rem 3.5rem;
     position: relative;
-    margin-top: -3.2rem;
+    margin-top: -1.6rem;
   }
 
   h1 {
@@ -99,16 +112,18 @@
     align-items: center;
     gap: 0.95rem;
     padding: 0.95rem 1.45rem;
-    border: 1px solid rgba(255, 255, 255, 0.09);
+    border: 1px solid rgba(255, 255, 255, 0.60);
     border-radius: 999px;
     background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, transparent 14%, transparent 82%, rgba(0, 0, 0, 0.28) 100%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0.12) 14%, rgba(255, 255, 255, 0.12) 82%, rgba(96, 118, 116, 0.22) 100%),
       var(--card);
+    backdrop-filter: blur(14px) saturate(160%);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.16),
-      inset 0 -1px 1px rgba(0, 0, 0, 0.55),
-      0 10px 20px rgba(0, 0, 0, 0.55),
-      0 2px 5px rgba(0, 0, 0, 0.4);
+      inset 0 1px 0 rgba(255, 255, 255, 0.85),
+      inset 0 -1px 1px rgba(40, 60, 58, 0.25),
+      0 10px 24px rgba(40, 60, 58, 0.20),
+      0 2px 6px rgba(40, 60, 58, 0.13);
     text-decoration: none;
     color: var(--ink);
     transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
@@ -116,16 +131,16 @@
 
   .link:hover, .link:focus-visible {
     background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, transparent 14%, transparent 82%, rgba(0, 0, 0, 0.28) 100%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0.12) 14%, rgba(255, 255, 255, 0.12) 82%, rgba(96, 118, 116, 0.22) 100%),
       var(--card-hover);
-    border-color: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.8);
     transform: translateY(-1px);
   }
 
   .link:active { transform: translateY(0); }
 
   .link:focus-visible {
-    outline: 1.5px solid rgba(245, 242, 234, 0.5);
+    outline: 1.5px solid rgba(30, 42, 40, 0.5);
     outline-offset: 2px;
   }
 
@@ -144,25 +159,27 @@
   .link .icon svg {
     width: 1.35rem;
     height: 1.35rem;
-    fill: rgba(235, 235, 240, 0.55);
+    fill: var(--glass-ink);
     display: block;
-    filter:
-      drop-shadow(0 1px 0 rgba(255, 255, 255, 0.14))
-      drop-shadow(0 2px 5px rgba(0, 0, 0, 0.45));
+    filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.55));
   }
 
   /* The Ares mark is stroked, not filled — same glass ink. */
   .icon.ic-ares svg { fill: none; width: 1.45rem; height: auto; }
-  .icon.ic-ares svg path { stroke: rgba(235, 235, 240, 0.55); }
+  .icon.ic-ares svg path { stroke: var(--glass-ink); }
   /* The Ekris house glyph is wide (1342x894). */
   .icon.ic-ekris svg { width: 1.5rem; height: auto; }
 
   .link .text { flex: 1; min-width: 0; }
 
+  /* Labels etched in the same tinted glass as the glyphs: translucent
+     ink with a white catch-light beneath, debossed into the surface. */
   .link .name {
     font-weight: 600;
     font-size: 0.98rem;
     letter-spacing: 0.005em;
+    color: var(--glass-ink);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
   }
 
 
