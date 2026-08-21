@@ -163,7 +163,13 @@
     font-size: 1rem;
     text-align: left;
     cursor: pointer;
-    transition: background 180ms ease, border-color 180ms ease, transform 220ms var(--ease-out);
+    transition: background 180ms ease, border-color 180ms ease, transform 220ms var(--ease-out), border-radius 420ms var(--ease-out);
+  }
+
+  .row.open .link {
+    border-radius: 22px 22px 0 0;
+    border-bottom-color: transparent;
+    transform: none;
   }
 
   .link:hover, .link:focus-visible {
@@ -236,7 +242,7 @@
   .drawer-inner { overflow: hidden; min-height: 0; }
 
   .drawer-pad {
-    padding: 0.85rem 0.35rem 0.5rem;
+    padding: 0 0 0.9rem;
     opacity: 0;
     transform: translateY(-6px);
     transition: opacity 320ms ease, transform 420ms var(--ease-out);
@@ -251,43 +257,14 @@
   /* browser-chrome frame, same glass language as the pills */
   .frame {
     border: 1px solid rgba(255, 255, 255, 0.09);
-    border-radius: 18px;
+    border-top: none;
+    border-radius: 0 0 22px 22px;
     overflow: hidden;
     background: #0b0b0d;
     box-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.10),
       0 14px 30px rgba(0, 0, 0, 0.6),
       0 3px 8px rgba(0, 0, 0, 0.45);
-  }
-
-  .frame-bar {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.55rem 0.8rem;
-    background: rgba(255, 255, 255, 0.045);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-  }
-
-  .frame-bar i {
-    width: 0.55rem;
-    height: 0.55rem;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.16);
-  }
-
-  .frame-bar .url {
-    flex: 1;
-    margin-left: 0.35rem;
-    font-size: 0.72rem;
-    letter-spacing: 0.01em;
-    color: var(--ink-faint);
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 999px;
-    padding: 0.18rem 0.7rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
 
   .frame-body {
@@ -347,26 +324,18 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    margin-top: 0.7rem;
-    padding: 0.8rem 1.3rem;
-    border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    background: rgba(255, 255, 255, 0.07);
-    backdrop-filter: blur(22px) saturate(180%);
-    -webkit-backdrop-filter: blur(22px) saturate(180%);
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.22),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.35),
-      0 8px 22px rgba(0, 0, 0, 0.45);
+    padding: 0.85rem 1.3rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.05);
     color: var(--ink);
     font-weight: 600;
     font-size: 0.92rem;
     text-decoration: none;
-    transition: background 180ms ease, border-color 180ms ease, transform 220ms var(--ease-out);
+    transition: background 180ms ease;
   }
 
-  .cta:hover { background: rgba(255, 255, 255, 0.11); border-color: rgba(255, 255, 255, 0.2); transform: translateY(-1px); }
-  .cta:active { transform: scale(0.985); }
+  .cta:hover { background: rgba(255, 255, 255, 0.09); }
+  .cta:active { opacity: 0.85; }
   .cta svg { width: 0.85rem; height: 0.85rem; }
 
   @keyframes rise {
@@ -403,11 +372,10 @@
       <div class="drawer" id="d-ares" aria-hidden="true">
         <div class="drawer-inner"><div class="drawer-pad">
           <div class="frame">
-            <div class="frame-bar"><i></i><i></i><i></i><span class="url">aresdeploy.com</span></div>
             <div class="frame-body"><iframe data-src="https://aresdeploy.com" title="Ares — live preview" loading="lazy"></iframe></div>
-          </div>
           <a class="cta" href="https://aresdeploy.com">Open Ares
             <svg viewBox="0 0 16 16" fill="none"><path d="M6 3.5 10.5 8 6 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
         </div></div>
       </div>
     </div>
@@ -423,11 +391,10 @@
       <div class="drawer" id="d-ekris" aria-hidden="true">
         <div class="drawer-inner"><div class="drawer-pad">
           <div class="frame">
-            <div class="frame-bar"><i></i><i></i><i></i><span class="url">ekris — live card</span></div>
             <div class="frame-body"><iframe data-src="https://cards-production-3955.up.railway.app/c/zW7bWWoyHakacF4j-2ymUA" title="Ekris card — live" loading="lazy"></iframe></div>
-          </div>
           <a class="cta" href="https://cards-production-3955.up.railway.app/c/zW7bWWoyHakacF4j-2ymUA">Open the card
             <svg viewBox="0 0 16 16" fill="none"><path d="M6 3.5 10.5 8 6 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
         </div></div>
       </div>
     </div>
@@ -443,11 +410,10 @@
       <div class="drawer" id="d-ig" aria-hidden="true">
         <div class="drawer-inner"><div class="drawer-pad">
           <div class="frame">
-            <div class="frame-bar"><i></i><i></i><i></i><span class="url">instagram.com/aresaiagent</span></div>
             <div class="frame-body"><img class="kb p-ig" src="previews/instagram.jpg?v=2" alt="Instagram — @aresaiagent" loading="lazy" /></div>
-          </div>
           <a class="cta" href="https://www.instagram.com/aresaiagent/" data-app="instagram://user?username=aresaiagent">Open Instagram
             <svg viewBox="0 0 16 16" fill="none"><path d="M6 3.5 10.5 8 6 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
         </div></div>
       </div>
     </div>
@@ -463,11 +429,10 @@
       <div class="drawer" id="d-x" aria-hidden="true">
         <div class="drawer-inner"><div class="drawer-pad">
           <div class="frame">
-            <div class="frame-bar"><i></i><i></i><i></i><span class="url">x.com/aresaiagent</span></div>
             <div class="frame-body"><img class="kb p-x" src="previews/x.jpg?v=3" alt="X — @aresaiagent" loading="lazy" /></div>
-          </div>
           <a class="cta" href="https://x.com/aresaiagent" data-app="twitter://user?screen_name=aresaiagent">Open X
             <svg viewBox="0 0 16 16" fill="none"><path d="M6 3.5 10.5 8 6 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
         </div></div>
       </div>
     </div>
@@ -483,11 +448,10 @@
       <div class="drawer" id="d-yt" aria-hidden="true">
         <div class="drawer-inner"><div class="drawer-pad">
           <div class="frame">
-            <div class="frame-bar"><i></i><i></i><i></i><span class="url">youtube.com/@aresaiagent</span></div>
             <div class="frame-body"><img class="kb p-yt" src="previews/youtube.jpg?v=2" alt="YouTube — Ares" loading="lazy" /></div>
-          </div>
           <a class="cta" href="https://www.youtube.com/@aresaiagent" data-app="youtube://www.youtube.com/@aresaiagent">Open YouTube
             <svg viewBox="0 0 16 16" fill="none"><path d="M6 3.5 10.5 8 6 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
         </div></div>
       </div>
     </div>
@@ -503,7 +467,6 @@
       <div class="drawer" id="d-li" aria-hidden="true">
         <div class="drawer-inner"><div class="drawer-pad">
           <div class="frame">
-            <div class="frame-bar"><i></i><i></i><i></i><span class="url">linkedin.com/in/jonah-thorndike</span></div>
             <div class="frame-body">
               <div class="li-card">
                 <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.1 2.1 0 1 1 0 4.2 2.1 2.1 0 0 1 0-4.2ZM3.16 9.24h3.66V20.5H3.16V9.24Zm5.83 0h3.51v1.54h.05c.49-.92 1.68-1.9 3.46-1.9 3.7 0 4.39 2.44 4.39 5.6v6.02h-3.66v-5.34c0-1.27-.02-2.91-1.77-2.91-1.78 0-2.05 1.39-2.05 2.82v5.43H8.99V9.24Z"/></svg>
@@ -511,9 +474,9 @@
                 <div class="li-sub">Connect with me on LinkedIn</div>
               </div>
             </div>
-          </div>
           <a class="cta" href="https://www.linkedin.com/in/jonah-thorndike-45229741a/" data-app="linkedin://in/jonah-thorndike-45229741a">Open LinkedIn
             <svg viewBox="0 0 16 16" fill="none"><path d="M6 3.5 10.5 8 6 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
         </div></div>
       </div>
     </div>
